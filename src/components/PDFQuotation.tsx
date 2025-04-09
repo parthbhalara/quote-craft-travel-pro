@@ -18,7 +18,11 @@ const PDFQuotation: React.FC = () => {
     filename: currentQuotation 
       ? `Travel_Quotation_${currentQuotation.details.customerName.replace(/\s+/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf`
       : 'Travel_Quotation.pdf',
-    page: { scale: 0.85 }
+    // Remove the incorrect 'page: { scale: 0.85 }' and use the proper options structure
+    options: {
+      // Adjust the scale through proper options
+      scale: 0.85
+    }
   });
 
   if (!currentQuotation) {
