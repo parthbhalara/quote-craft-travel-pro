@@ -34,10 +34,8 @@ const PDFQuotation: React.FC = () => {
   const totals = calculateTotals();
 
   const handleDownloadPDF = () => {
-    // Fix: Pass options correctly according to the library's API
-    toPDF({ 
-      scale: 0.85, 
-    });
+    // Fix: Use the correct API - toPDF() without additional options
+    toPDF();
     
     toast({
       title: "PDF Generated",
