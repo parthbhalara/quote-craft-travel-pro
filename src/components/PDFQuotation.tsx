@@ -1,7 +1,7 @@
 
 import React, { useRef } from "react";
 import { format } from "date-fns";
-import { generatePDF } from "react-to-pdf";
+import generatePDF from "react-to-pdf";
 import { Download, Printer, ChevronLeft } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
