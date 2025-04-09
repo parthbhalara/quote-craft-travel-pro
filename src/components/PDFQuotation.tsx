@@ -1,7 +1,7 @@
 
 import React, { useRef } from "react";
 import { format } from "date-fns";
-import generatePDF from "react-to-pdf";
+import { usePDF } from "react-to-pdf";
 import { Download, Printer, ChevronLeft } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,13 @@ const PDFQuotation: React.FC = () => {
   const { currentQuotation, calculateTotals, setCurrentStep } = useQuotation();
   const { toast } = useToast();
   const pdfRef = useRef<HTMLDivElement>(null);
+  const { toPDF } = usePDF({
+    targetRef: pdfRef,
+    filename: currentQuotation 
+      ? `Travel_Quotation_${currentQuotation.details.customerName.replace(/\s+/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf`
+      : 'Travel_Quotation.pdf',
+    page: { scale: 0.85 }
+  });
 
   if (!currentQuotation) {
     return (
@@ -30,14 +37,7 @@ const PDFQuotation: React.FC = () => {
   const totals = calculateTotals();
 
   const handleDownloadPDF = () => {
-    generatePDF({ 
-      element: pdfRef.current,
-      filename: `Travel_Quotation_${details.customerName.replace(/\s+/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf`,
-      options: {
-        // Adjust this scale if the PDF is too large or too small
-        scale: 0.85,
-      }
-    });
+    toPDF();
     toast({
       title: "PDF Generated",
       description: "Your quotation PDF has been generated successfully.",
