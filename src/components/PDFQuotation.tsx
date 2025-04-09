@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import { format } from "date-fns";
 import { usePDF } from "react-to-pdf";
@@ -14,15 +13,9 @@ const PDFQuotation: React.FC = () => {
   const { toast } = useToast();
   const pdfRef = useRef<HTMLDivElement>(null);
   const { toPDF } = usePDF({
-    targetRef: pdfRef,
     filename: currentQuotation 
       ? `Travel_Quotation_${currentQuotation.details.customerName.replace(/\s+/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf`
       : 'Travel_Quotation.pdf',
-    // Remove the incorrect 'page: { scale: 0.85 }' and use the proper options structure
-    options: {
-      // Adjust the scale through proper options
-      scale: 0.85
-    }
   });
 
   if (!currentQuotation) {
@@ -41,7 +34,7 @@ const PDFQuotation: React.FC = () => {
   const totals = calculateTotals();
 
   const handleDownloadPDF = () => {
-    toPDF();
+    toPDF({ targetRef: pdfRef, filename: currentQuotation ? `Travel_Quotation_${currentQuotation.details.customerName.replace(/\s+/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf` : 'Travel_Quotation.pdf', options: { scale: 0.85 } });
     toast({
       title: "PDF Generated",
       description: "Your quotation PDF has been generated successfully.",
