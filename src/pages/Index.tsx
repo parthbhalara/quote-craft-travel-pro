@@ -1,12 +1,23 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from "react";
+import { QuotationProvider } from "@/context/QuotationContext";
+import QuotationWizard from "@/components/QuotationWizard";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-travel-blue text-white p-4 shadow-md">
+        <div className="container mx-auto flex justify-between items-center">
+          <h1 className="text-xl font-bold">Travel Quotation Pro</h1>
+          <div className="text-sm">Travel Agent Dashboard</div>
+        </div>
+      </header>
+      
+      <main className="flex-grow flex flex-col h-[calc(100vh-64px)]">
+        <QuotationProvider>
+          <QuotationWizard />
+        </QuotationProvider>
+      </main>
     </div>
   );
 };
