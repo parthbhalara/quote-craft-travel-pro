@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import { format } from "date-fns";
 import { usePDF } from "react-to-pdf";
@@ -35,10 +34,9 @@ const PDFQuotation: React.FC = () => {
   const totals = calculateTotals();
 
   const handleDownloadPDF = () => {
-    // Fix: Pass the ref to the toPDF function properly according to the library's API
-    toPDF(pdfRef, { 
-      filename: currentQuotation ? `Travel_Quotation_${currentQuotation.details.customerName.replace(/\s+/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf` : 'Travel_Quotation.pdf',
-      page: { scale: 0.85 }
+    // Fix: Pass options correctly according to the library's API
+    toPDF({ 
+      scale: 0.85, 
     });
     
     toast({
