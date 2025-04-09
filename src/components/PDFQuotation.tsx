@@ -13,6 +13,8 @@ const PDFQuotation: React.FC = () => {
   const { currentQuotation, calculateTotals, setCurrentStep } = useQuotation();
   const { toast } = useToast();
   const pdfRef = useRef<HTMLDivElement>(null);
+  
+  // Configure PDF options
   const { toPDF } = usePDF({
     filename: currentQuotation 
       ? `Travel_Quotation_${currentQuotation.details.customerName.replace(/\s+/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf`
@@ -23,7 +25,7 @@ const PDFQuotation: React.FC = () => {
     return (
       <div className="p-8 text-center">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">No Quotation Found</h2>
-        <p className="text-gray-500">Please create a new quotation first.</p>
+        <p className="text-gray-500 mb-4">Please create a new quotation first.</p>
         <Button className="mt-4" onClick={() => setCurrentStep("details")}>
           Start New Quotation
         </Button>
@@ -61,7 +63,7 @@ const PDFQuotation: React.FC = () => {
           <Button variant="outline" onClick={handlePrint}>
             <Printer className="h-4 w-4 mr-1" /> Print
           </Button>
-          <Button className="bg-travel-blue hover:bg-travel-blue-dark" onClick={handleDownloadPDF}>
+          <Button className="bg-blue-600 hover:bg-blue-700" onClick={handleDownloadPDF}>
             <Download className="h-4 w-4 mr-1" /> Download PDF
           </Button>
         </div>

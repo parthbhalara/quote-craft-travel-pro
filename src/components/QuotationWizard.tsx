@@ -14,7 +14,7 @@ import QuotationsList from "./QuotationsList";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const QuotationWizard: React.FC = () => {
-  const { currentStep, currentQuotation } = useQuotation();
+  const { currentStep, currentQuotation, setCurrentStep } = useQuotation();
 
   return (
     <div className="h-full flex flex-col">
@@ -24,60 +24,54 @@ const QuotationWizard: React.FC = () => {
             <Tabs
               value={currentStep}
               className="w-full"
-              onValueChange={() => {}}
+              onValueChange={(value) => setCurrentStep(value as any)}
             >
               <TabsList className="grid grid-cols-6 w-full">
                 <TabsTrigger
                   value="details"
                   className={cn(
-                    currentStep === "details" ? "bg-travel-blue text-white" : ""
+                    currentStep === "details" ? "bg-blue-600 text-white" : ""
                   )}
-                  disabled
                 >
                   Details
                 </TabsTrigger>
                 <TabsTrigger
                   value="transport"
                   className={cn(
-                    currentStep === "transport" ? "bg-travel-blue text-white" : ""
+                    currentStep === "transport" ? "bg-blue-600 text-white" : ""
                   )}
-                  disabled
                 >
                   Transport
                 </TabsTrigger>
                 <TabsTrigger
                   value="itinerary"
                   className={cn(
-                    currentStep === "itinerary" ? "bg-travel-blue text-white" : ""
+                    currentStep === "itinerary" ? "bg-blue-600 text-white" : ""
                   )}
-                  disabled
                 >
                   Itinerary
                 </TabsTrigger>
                 <TabsTrigger
                   value="costs"
                   className={cn(
-                    currentStep === "costs" ? "bg-travel-blue text-white" : ""
+                    currentStep === "costs" ? "bg-blue-600 text-white" : ""
                   )}
-                  disabled
                 >
                   Costs
                 </TabsTrigger>
                 <TabsTrigger
                   value="summary"
                   className={cn(
-                    currentStep === "summary" ? "bg-travel-blue text-white" : ""
+                    currentStep === "summary" ? "bg-blue-600 text-white" : ""
                   )}
-                  disabled
                 >
                   Summary
                 </TabsTrigger>
                 <TabsTrigger
                   value="preview"
                   className={cn(
-                    currentStep === "preview" ? "bg-travel-blue text-white" : ""
+                    currentStep === "preview" ? "bg-blue-600 text-white" : ""
                   )}
-                  disabled
                 >
                   Preview
                 </TabsTrigger>

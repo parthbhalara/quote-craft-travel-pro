@@ -58,9 +58,9 @@ const QuotationDocument: React.FC<QuotationDocumentProps> = ({ quotation, totals
       
       <CostSummarySection totals={totals} serviceCharge={serviceCharge} />
       
-      <TermsAndConditions />
+      <TermsAndConditions validityDays={14} depositPercentage={25} paymentDaysBefore={30} />
       
-      <PDFFooter />
+      <PDFFooter companyName="TravelPro Agency" />
     </div>
   );
 };
