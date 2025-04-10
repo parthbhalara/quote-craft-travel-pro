@@ -1,3 +1,5 @@
+https://chatgpt.com/c/67f65cae-f1b8-8005-8fb3-f34ebaf33637
+
 # Welcome to your Lovable project
 
 ## Project info
