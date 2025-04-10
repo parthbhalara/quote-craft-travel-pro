@@ -16,6 +16,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 const QuotationWizard: React.FC = () => {
   const { currentStep, currentQuotation, setCurrentStep } = useQuotation();
 
+  console.log("QuotationWizard rendering, currentStep:", currentStep, "currentQuotation:", currentQuotation ? "exists" : "null");
+
   return (
     <div className="h-full flex flex-col">
       {currentQuotation ? (

@@ -2,6 +2,7 @@
 import React from "react";
 import { QuotationProvider } from "@/context/QuotationContext";
 import QuotationWizard from "@/components/QuotationWizard";
+import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <main className="container mx-auto py-6 px-4">
         <QuotationProvider>
           <QuotationWizard />
+          <Toaster />
         </QuotationProvider>
       </main>
     </div>

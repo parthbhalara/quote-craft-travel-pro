@@ -67,7 +67,7 @@ const getStatusColor = (status: string) => {
 };
 
 const QuotationsList: React.FC = () => {
-  const { quotations, editQuotation, duplicateQuotation, deleteQuotation, currentQuotation, resetCurrentQuotation } =
+  const { quotations, editQuotation, duplicateQuotation, deleteQuotation, currentQuotation, resetCurrentQuotation, setCurrentStep } =
     useQuotation();
   const { toast } = useToast();
 
@@ -97,6 +97,8 @@ const QuotationsList: React.FC = () => {
 
   const handleCreateNew = () => {
     resetCurrentQuotation();
+    setCurrentStep("details");
+    console.log("Create new quotation clicked, currentStep set to details");
   };
 
   return (
