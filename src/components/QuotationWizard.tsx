@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuotation } from "@/context/QuotationContext";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +17,10 @@ const QuotationWizard: React.FC = () => {
   const { currentStep, currentQuotation, setCurrentStep } = useQuotation();
 
   console.log("QuotationWizard rendering, currentStep:", currentStep, "currentQuotation:", currentQuotation ? "exists" : "null");
+  
+  useEffect(() => {
+    console.log("QuotationWizard effect - currentStep:", currentStep, "currentQuotation:", currentQuotation ? "exists" : "null");
+  }, [currentStep, currentQuotation]);
 
   return (
     <div className="h-full flex flex-col">

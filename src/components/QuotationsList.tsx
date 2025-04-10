@@ -10,6 +10,7 @@ import {
   CheckCircle,
   Clock,
   XCircle,
+  PlusCircle
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -67,7 +68,7 @@ const getStatusColor = (status: string) => {
 };
 
 const QuotationsList: React.FC = () => {
-  const { quotations, editQuotation, duplicateQuotation, deleteQuotation, currentQuotation, resetCurrentQuotation, setCurrentStep } =
+  const { quotations, editQuotation, duplicateQuotation, deleteQuotation, resetCurrentQuotation, setCurrentStep } =
     useQuotation();
   const { toast } = useToast();
 
@@ -96,9 +97,10 @@ const QuotationsList: React.FC = () => {
   };
 
   const handleCreateNew = () => {
+    console.log("Create new quotation button clicked");
     resetCurrentQuotation();
     setCurrentStep("details");
-    console.log("Create new quotation clicked, currentStep set to details");
+    console.log("Current step set to details after resetting quotation");
   };
 
   return (
@@ -111,7 +113,8 @@ const QuotationsList: React.FC = () => {
           </p>
         </div>
 
-        <Button onClick={handleCreateNew} className="bg-travel-blue hover:bg-travel-blue-dark">
+        <Button onClick={handleCreateNew} size="lg" className="bg-blue-600 hover:bg-blue-700">
+          <PlusCircle className="mr-2 h-4 w-4" />
           Create New Quotation
         </Button>
       </div>

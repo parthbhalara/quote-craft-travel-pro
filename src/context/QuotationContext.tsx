@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState, ReactNode } from "react";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -52,6 +51,7 @@ export const QuotationProvider = ({ children }: { children: ReactNode }) => {
 
   // Create a new quotation
   const createNewQuotation = (details: Omit<QuotationDetails, "id" | "createdAt" | "status">) => {
+    console.log("Creating new quotation with details:", details);
     const newQuotation: Quotation = {
       details: {
         ...details,
@@ -65,6 +65,7 @@ export const QuotationProvider = ({ children }: { children: ReactNode }) => {
     };
     setCurrentQuotation(newQuotation);
     setCurrentStep("transport");
+    console.log("New quotation created:", newQuotation);
   };
 
   // Update the details of the current quotation
@@ -304,8 +305,8 @@ export const QuotationProvider = ({ children }: { children: ReactNode }) => {
 
   // Reset current quotation
   const resetCurrentQuotation = () => {
+    console.log("Resetting current quotation");
     setCurrentQuotation(null);
-    setCurrentStep("details");
   };
 
   const value: QuotationContextType = {

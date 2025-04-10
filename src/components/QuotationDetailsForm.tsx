@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,6 +24,7 @@ import {
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { useQuotation } from "@/context/QuotationContext";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   customerName: z.string().min(2, "Customer name is required"),
@@ -52,6 +52,9 @@ type FormValues = z.infer<typeof formSchema>;
 
 const QuotationDetailsForm: React.FC = () => {
   const { createNewQuotation, currentQuotation, updateQuotationDetails, setCurrentStep } = useQuotation();
+  const { toast } = useToast();
+
+  console.log("QuotationDetailsForm rendering, currentQuotation:", currentQuotation ? "exists" : "null");
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -75,11 +78,23 @@ const QuotationDetailsForm: React.FC = () => {
   });
 
   const onSubmit = (values: FormValues) => {
+    console.log("Submitting form with values:", values);
+    
     if (currentQuotation) {
+      console.log("Updating existing quotation details");
       updateQuotationDetails(values);
       setCurrentStep("transport");
+      toast({
+        title: "Quotation details updated",
+        description: "Your changes have been saved.",
+      });
     } else {
+      console.log("Creating new quotation");
       createNewQuotation(values);
+      toast({
+        title: "New quotation created",
+        description: "Your quotation has been created successfully.",
+      });
     }
   };
 
@@ -256,7 +271,11 @@ const QuotationDetailsForm: React.FC = () => {
           />
 
           <div className="flex justify-end">
-            <Button type="submit" className="bg-travel-blue hover:bg-travel-blue-dark">
+            <Button 
+              type="submit" 
+              className="bg-blue-600 hover:bg-blue-700"
+              size="lg"
+            >
               {currentQuotation ? "Update Details" : "Create Quotation"} &rarr;
             </Button>
           </div>
