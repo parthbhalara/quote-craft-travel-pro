@@ -1,4 +1,3 @@
-
 import React from "react";
 import { format } from "date-fns";
 import { Check, Calendar, MapPin, Users, CreditCard } from "lucide-react";
@@ -81,7 +80,7 @@ const QuotationSummary: React.FC = () => {
               {details.budget && (
                 <div>
                   <div className="text-sm text-gray-500">Budget</div>
-                  <div className="font-medium">€{details.budget.toFixed(2)}</div>
+                  <div className="font-medium">₹{details.budget.toFixed(2)}</div>
                 </div>
               )}
             </div>
@@ -157,8 +156,8 @@ const QuotationSummary: React.FC = () => {
                   <TableCell>
                     <span className="capitalize">{option.mode}</span>
                   </TableCell>
-                  <TableCell>€{option.costPerTraveler.toFixed(2)}</TableCell>
-                  <TableCell>€{(option.costPerTraveler * details.numberOfTravelers).toFixed(2)}</TableCell>
+                  <TableCell>₹{option.costPerTraveler.toFixed(2)}</TableCell>
+                  <TableCell>₹{(option.costPerTraveler * details.numberOfTravelers).toFixed(2)}</TableCell>
                 </TableRow>
               ))}
               <TableRow>
@@ -166,7 +165,7 @@ const QuotationSummary: React.FC = () => {
                   Transport Subtotal:
                 </TableCell>
                 <TableCell className="font-bold">
-                  €{totals.transportTotal.toFixed(2)}
+                  ₹{totals.transportTotal.toFixed(2)}
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -196,7 +195,7 @@ const QuotationSummary: React.FC = () => {
                     </div>
                     {item.hotelCost && (
                       <Badge variant="outline" className="bg-travel-teal-light text-travel-teal border-travel-teal">
-                        €{item.hotelCost.toFixed(2)}
+                        ₹{item.hotelCost.toFixed(2)}
                       </Badge>
                     )}
                   </div>
@@ -233,7 +232,7 @@ const QuotationSummary: React.FC = () => {
                 </div>
               ))}
             <div className="text-right font-medium pt-2">
-              Accommodation Subtotal: <span className="font-bold">€{totals.hotelTotal.toFixed(2)}</span>
+              Accommodation Subtotal: <span className="font-bold">₹{totals.hotelTotal.toFixed(2)}</span>
             </div>
           </div>
         </CardContent>
@@ -262,13 +261,13 @@ const QuotationSummary: React.FC = () => {
                     {additionalCosts.map((cost) => (
                       <TableRow key={cost.id}>
                         <TableCell>{cost.description}</TableCell>
-                        <TableCell className="text-right">€{cost.amount.toFixed(2)}</TableCell>
+                        <TableCell className="text-right">₹{cost.amount.toFixed(2)}</TableCell>
                       </TableRow>
                     ))}
                     <TableRow>
                       <TableCell className="font-medium">Additional Costs Subtotal:</TableCell>
                       <TableCell className="text-right font-bold">
-                        €{totals.additionalCostsTotal.toFixed(2)}
+                        ₹{totals.additionalCostsTotal.toFixed(2)}
                       </TableCell>
                     </TableRow>
                   </TableBody>
@@ -280,31 +279,31 @@ const QuotationSummary: React.FC = () => {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span>Transport Total:</span>
-                  <span>€{totals.transportTotal.toFixed(2)}</span>
+                  <span>₹{totals.transportTotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Accommodation Total:</span>
-                  <span>€{totals.hotelTotal.toFixed(2)}</span>
+                  <span>₹{totals.hotelTotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Additional Costs Total:</span>
-                  <span>€{totals.additionalCostsTotal.toFixed(2)}</span>
+                  <span>₹{totals.additionalCostsTotal.toFixed(2)}</span>
                 </div>
                 <Separator />
                 <div className="flex justify-between">
                   <span className="font-medium">Subtotal:</span>
-                  <span className="font-medium">€{totals.subtotal.toFixed(2)}</span>
+                  <span className="font-medium">₹{totals.subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Service Charge {serviceCharge?.type === "percentage" && 
                     `(${serviceCharge.value}%)`
                   }:</span>
-                  <span>€{totals.serviceChargeAmount.toFixed(2)}</span>
+                  <span>₹{totals.serviceChargeAmount.toFixed(2)}</span>
                 </div>
                 <Separator />
                 <div className="flex justify-between text-lg font-bold">
                   <span>Grand Total:</span>
-                  <span>€{totals.grandTotal.toFixed(2)}</span>
+                  <span>₹{totals.grandTotal.toFixed(2)}</span>
                 </div>
               </div>
             </div>
@@ -320,12 +319,12 @@ const QuotationSummary: React.FC = () => {
                   ) : (
                     <span className="text-xl mr-2">!</span>
                   )}
-                  <span>Customer Budget: €{details.budget.toFixed(2)}</span>
+                  <span>Customer Budget: ₹{details.budget.toFixed(2)}</span>
                 </div>
                 <div className="font-medium">
                   {totals.grandTotal <= details.budget 
-                    ? `€${(details.budget - totals.grandTotal).toFixed(2)} under budget`
-                    : `€${(totals.grandTotal - details.budget).toFixed(2)} over budget`
+                    ? `₹${(details.budget - totals.grandTotal).toFixed(2)} under budget`
+                    : `₹${(totals.grandTotal - details.budget).toFixed(2)} over budget`
                   }
                 </div>
               </div>

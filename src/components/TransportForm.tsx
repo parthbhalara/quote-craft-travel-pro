@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -206,7 +205,7 @@ const TransportForm: React.FC = () => {
               name="costPerTraveler"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Cost Per Traveler (€)</FormLabel>
+                  <FormLabel>Cost Per Traveler (₹)</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -313,7 +312,7 @@ const TransportForm: React.FC = () => {
                         {transport.date ? format(transport.date, "PP") : "No date specified"}
                       </p>
                       <p className="mt-2 font-medium">
-                        €{transport.costPerTraveler} per traveler
+                        ₹{transport.costPerTraveler} per traveler
                       </p>
                       {transport.notes && (
                         <p className="mt-1 text-sm text-gray-600">{transport.notes}</p>

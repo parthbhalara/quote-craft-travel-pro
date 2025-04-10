@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -81,7 +80,7 @@ const CostsForm: React.FC = () => {
     setServiceCharge(values);
     toast({
       title: "Service charge updated",
-      description: `Service charge set to ${values.type === "fixed" ? "€" + values.value : values.value + "%"}.`,
+      description: `Service charge set to ${values.type === "fixed" ? "₹" + values.value : values.value + "%"}.`,
     });
   };
 
@@ -149,7 +148,7 @@ const CostsForm: React.FC = () => {
                   name="amount"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Amount (€)</FormLabel>
+                      <FormLabel>Amount (₹)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -179,7 +178,7 @@ const CostsForm: React.FC = () => {
                     <CardContent className="p-3 flex justify-between items-center">
                       <div>
                         <p className="font-medium">{cost.description}</p>
-                        <p className="text-sm text-gray-500">€{cost.amount.toFixed(2)}</p>
+                        <p className="text-sm text-gray-500">₹{cost.amount.toFixed(2)}</p>
                       </div>
                       <div className="flex gap-2">
                         <Button
@@ -249,7 +248,7 @@ const CostsForm: React.FC = () => {
                     <FormItem>
                       <FormLabel>
                         {serviceChargeForm.watch("type") === "fixed" 
-                          ? "Amount (€)" 
+                          ? "Amount (₹)" 
                           : "Percentage (%)"}
                       </FormLabel>
                       <FormControl>
@@ -280,29 +279,29 @@ const CostsForm: React.FC = () => {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-sm">Transport:</span>
-                  <span className="font-medium">€{totals.transportTotal.toFixed(2)}</span>
+                  <span className="font-medium">₹{totals.transportTotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Accommodation:</span>
-                  <span className="font-medium">€{totals.hotelTotal.toFixed(2)}</span>
+                  <span className="font-medium">₹{totals.hotelTotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Additional Costs:</span>
-                  <span className="font-medium">€{totals.additionalCostsTotal.toFixed(2)}</span>
+                  <span className="font-medium">₹{totals.additionalCostsTotal.toFixed(2)}</span>
                 </div>
                 <div className="border-t pt-2 flex justify-between">
                   <span className="text-sm">Subtotal:</span>
-                  <span className="font-medium">€{totals.subtotal.toFixed(2)}</span>
+                  <span className="font-medium">₹{totals.subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm">Service Charge {currentQuotation?.serviceCharge?.type === "percentage" && 
                     `(${currentQuotation.serviceCharge.value}%)`
                   }:</span>
-                  <span className="font-medium">€{totals.serviceChargeAmount.toFixed(2)}</span>
+                  <span className="font-medium">₹{totals.serviceChargeAmount.toFixed(2)}</span>
                 </div>
                 <div className="border-t pt-2 flex justify-between text-lg font-bold">
                   <span>Total:</span>
-                  <span>€{totals.grandTotal.toFixed(2)}</span>
+                  <span>₹{totals.grandTotal.toFixed(2)}</span>
                 </div>
               </div>
             </div>

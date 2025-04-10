@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import { format } from "date-fns";
 import { usePDF } from "react-to-pdf";
@@ -15,10 +14,26 @@ const PDFQuotation: React.FC = () => {
   const pdfRef = useRef<HTMLDivElement>(null);
   
   // Configure PDF options
-  const { toPDF } = usePDF({
+  const { toPDF, targetRef } = usePDF({
     filename: currentQuotation 
       ? `Travel_Quotation_${currentQuotation.details.customerName.replace(/\s+/g, '_')}_${format(new Date(), 'yyyy-MM-dd')}.pdf`
       : 'Travel_Quotation.pdf',
+    method: 'save',
+    page: { 
+      margin: 20,
+      format: 'a4',
+      orientation: 'portrait'
+    },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      logging: true
+    },
+    jsPDF: {
+      unit: 'mm',
+      format: 'a4',
+      orientation: 'portrait'
+    }
   });
 
   if (!currentQuotation) {
@@ -35,13 +50,21 @@ const PDFQuotation: React.FC = () => {
 
   const totals = calculateTotals();
 
-  const handleDownloadPDF = () => {
-    toPDF();
-    
-    toast({
-      title: "PDF Generated",
-      description: "Your quotation PDF has been generated successfully.",
-    });
+  const handleDownloadPDF = async () => {
+    try {
+      await toPDF();
+      toast({
+        title: "PDF Generated",
+        description: "Your quotation PDF has been generated successfully.",
+      });
+    } catch (error) {
+      console.error('PDF generation error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to generate PDF. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   const handlePrint = () => {
@@ -69,7 +92,7 @@ const PDFQuotation: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white border rounded-lg p-8 shadow-sm" ref={pdfRef}>
+      <div className="bg-white border rounded-lg p-8 shadow-sm" ref={targetRef}>
         <QuotationDocument quotation={currentQuotation} totals={totals} />
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { AdditionalCost } from "@/types";
 
@@ -29,7 +28,7 @@ const AdditionalCostsSection: React.FC<AdditionalCostsSectionProps> = ({
           {additionalCosts.map((cost) => (
             <tr key={cost.id}>
               <td className="py-2 px-3 border">{cost.description}</td>
-              <td className="py-2 px-3 text-right border">€{cost.amount.toFixed(2)}</td>
+              <td className="py-2 px-3 text-right border">₹{cost.amount.toFixed(2)}</td>
             </tr>
           ))}
           <tr>
@@ -37,7 +36,7 @@ const AdditionalCostsSection: React.FC<AdditionalCostsSectionProps> = ({
               Additional Costs Subtotal:
             </td>
             <td className="py-2 px-3 text-right border font-bold">
-              €{additionalCostsTotal.toFixed(2)}
+              ₹{additionalCostsTotal.toFixed(2)}
             </td>
           </tr>
         </tbody>

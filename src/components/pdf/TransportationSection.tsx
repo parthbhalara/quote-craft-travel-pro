@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Transport, QuotationDetails } from "@/types";
 
@@ -32,8 +31,8 @@ const TransportationSection: React.FC<TransportationSectionProps> = ({
               <td className="py-2 px-3 border">{option.from}</td>
               <td className="py-2 px-3 border">{option.to}</td>
               <td className="py-2 px-3 border capitalize">{option.mode}</td>
-              <td className="py-2 px-3 text-right border">€{option.costPerTraveler.toFixed(2)}</td>
-              <td className="py-2 px-3 text-right border">€{(option.costPerTraveler * numberOfTravelers).toFixed(2)}</td>
+              <td className="py-2 px-3 text-right border">₹{option.costPerTraveler.toFixed(2)}</td>
+              <td className="py-2 px-3 text-right border">₹{(option.costPerTraveler * numberOfTravelers).toFixed(2)}</td>
             </tr>
           ))}
           <tr>
@@ -41,7 +40,7 @@ const TransportationSection: React.FC<TransportationSectionProps> = ({
               Transport Subtotal:
             </td>
             <td className="py-2 px-3 text-right border font-bold">
-              €{transportTotal.toFixed(2)}
+              ₹{transportTotal.toFixed(2)}
             </td>
           </tr>
         </tbody>

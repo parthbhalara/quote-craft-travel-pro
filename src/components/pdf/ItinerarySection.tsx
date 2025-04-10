@@ -1,4 +1,3 @@
-
 import React from "react";
 import { format } from "date-fns";
 import { ItineraryItem } from "@/types";
@@ -40,7 +39,7 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({ itineraryItems, hot
                       <p className="text-gray-700">{item.hotelName}</p>
                       {item.hotelCost && (
                         <p className="text-gray-700 font-medium">
-                          €{item.hotelCost.toFixed(2)}
+                          ₹{item.hotelCost.toFixed(2)}
                         </p>
                       )}
                     </div>
@@ -65,7 +64,7 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({ itineraryItems, hot
           ))}
         
         <div className="text-right font-medium pt-2">
-          Accommodation Subtotal: <span className="font-bold">€{hotelTotal.toFixed(2)}</span>
+          Accommodation Subtotal: <span className="font-bold">₹{hotelTotal.toFixed(2)}</span>
         </div>
       </div>
     </div>

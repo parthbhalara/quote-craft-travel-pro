@@ -1,4 +1,3 @@
-
 import React from "react";
 import { QuotationDetails } from "@/types";
 
@@ -22,7 +21,7 @@ const ClientInfoSection: React.FC<ClientInfoSectionProps> = ({ details }) => {
         {details.budget && (
           <div className="flex">
             <div className="w-32 text-gray-500">Budget:</div>
-            <div className="font-medium">€{details.budget.toFixed(2)}</div>
+            <div className="font-medium">₹{details.budget.toFixed(2)}</div>
           </div>
         )}
       </div>

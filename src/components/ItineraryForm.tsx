@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -248,7 +247,7 @@ const ItineraryForm: React.FC = () => {
                         name="hotelCost"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Hotel Cost (€) (Optional)</FormLabel>
+                            <FormLabel>Hotel Cost (₹) (Optional)</FormLabel>
                             <FormControl>
                               <Input
                                 type="number"
@@ -344,7 +343,7 @@ const ItineraryForm: React.FC = () => {
                             {item.hotelName && (
                               <div className="mt-2">
                                 <p className="text-sm font-medium text-gray-700">Accommodation</p>
-                                <p className="text-sm">{item.hotelName} {item.hotelCost && `- €${item.hotelCost}`}</p>
+                                <p className="text-sm">{item.hotelName} {item.hotelCost && `- ₹${item.hotelCost}`}</p>
                               </div>
                             )}
                             {item.activities && (

@@ -64,7 +64,6 @@ export const QuotationProvider = ({ children }: { children: ReactNode }) => {
       additionalCosts: [],
     };
     setCurrentQuotation(newQuotation);
-    setCurrentStep("transport");
     console.log("New quotation created:", newQuotation);
   };
 

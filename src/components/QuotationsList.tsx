@@ -1,4 +1,3 @@
-
 import React from "react";
 import { format } from "date-fns";
 import {
@@ -68,7 +67,7 @@ const getStatusColor = (status: string) => {
 };
 
 const QuotationsList: React.FC = () => {
-  const { quotations, editQuotation, duplicateQuotation, deleteQuotation, resetCurrentQuotation, setCurrentStep } =
+  const { quotations, editQuotation, duplicateQuotation, deleteQuotation, resetCurrentQuotation, setCurrentStep, createNewQuotation } =
     useQuotation();
   const { toast } = useToast();
 
@@ -99,8 +98,17 @@ const QuotationsList: React.FC = () => {
   const handleCreateNew = () => {
     console.log("Create new quotation button clicked");
     resetCurrentQuotation();
+    // Create a new quotation with default values
+    createNewQuotation({
+      customerName: "",
+      numberOfTravelers: 1,
+      startDate: new Date(),
+      endDate: new Date(new Date().setDate(new Date().getDate() + 7)),
+      travelLocations: "",
+    });
+    // Set the step to details after creating the quotation
     setCurrentStep("details");
-    console.log("Current step set to details after resetting quotation");
+    console.log("New quotation created with default values and step set to details");
   };
 
   return (
@@ -182,7 +190,7 @@ const QuotationsList: React.FC = () => {
                         </span>
                       </Badge>
                     </TableCell>
-                    <TableCell>€{total.toFixed(2)}</TableCell>
+                    <TableCell>₹{total.toFixed(2)}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">
                         <Button
